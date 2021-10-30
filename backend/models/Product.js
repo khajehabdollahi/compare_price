@@ -5,6 +5,10 @@ let productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    required: true,
+  },
   category: {
     type: String,
     required: true,
@@ -24,7 +28,7 @@ let productSchema = new mongoose.Schema({
   comparePrice: {
     type: Number,
     required: true,
-  }
+  },
 });
 
 module.exports = mongoose.model("Product", productSchema);
