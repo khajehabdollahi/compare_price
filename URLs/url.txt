@@ -1,0 +1,9 @@
+Citygross
+https://www.citygross.se/api/v1/esales/products
+
+Willys
+https://www.willys.se/leftMenu/categorytree
+
+Ica
+https://handla.ica.se/api/product-info/v1/store/15172/category/catalog80002
+https://handla.ica.se/api/content/v1/collection/customer-type/B2C/store/ica-supermarket-linero-torg-id_15172/products?categories=fritid---tradgard-id_2515&bb=true
