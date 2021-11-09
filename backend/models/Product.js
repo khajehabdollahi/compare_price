@@ -25,9 +25,16 @@ let productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  unit: {
+    type: String,
+    required: true,
+  },
   comparePrice: {
     type: Number,
     required: true,
+  },
+  shopName: {
+    type: String
   },
 });
 

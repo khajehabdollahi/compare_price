@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Product = require("./models/Product")
 const bodyParser = require("body-parser");
 const CityGrossData = require("./CityGross/fetchData");
+const MatHemData = require("./MatHem/fetchData");
 
 
 //Configuration MongoDB
@@ -19,6 +20,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let citygross = new CityGrossData();
 citygross.getAllData();
 
+let mathem = new MatHemData();
+mathem.getAllData();
+
 
 app.get("/api/products", async (req, res) => {
   await Product.find({}, (err, prod) => {
@@ -29,8 +33,6 @@ app.get("/api/products", async (req, res) => {
     }
   })
 });
-
-
 
 const port = process.env.PORT ||4000;
 app.listen(port, () => {

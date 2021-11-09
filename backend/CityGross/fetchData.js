@@ -67,15 +67,17 @@ module.exports = class CityGrossData {
       categoryProducts.map((product) => {
         const dbProduct = {
           productName: product.name,
-          description: "",
+          description: product.name,
           volume: this.calculateVolume(product),
           image:
             "https://www.citygross.se/images/products/" +
             product.images[0].url +
             "?w=300",
           price: product.defaultPrice.currentPrice.price,
+          unit: product.defaultPrice.currentPrice.unit,
           comparePrice: product.defaultPrice.currentPrice.comparisonPrice,
           category: this.getCategories(product.superCategory.toLowerCase()),
+          shopName: "citygross"
         };
         return Product.replaceOne(
           { productName: dbProduct.productName },
