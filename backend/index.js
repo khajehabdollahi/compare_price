@@ -24,17 +24,38 @@ let mathem = new MatHemData();
 mathem.getAllData();
 
 
-app.get("/api/products", async (req, res) => {
-  await Product.find({}, (err, prod) => {
-    if (err) {
-      res.json(err);
-    } else {
-      res.json(prod);
+// app.get("/api/products", async (req, res) => {
+//   await Product.find({}, (err, prod) => {
+//     if (err) {
+//       res.json(err);
+//     } else {
+//       res.json(prod);
+//     }
+//   })
+// });
+
+app.get("/api/search", async (req, res) => {
+
+  var regex = new RegExp(req.query.productname, "i");
+  const query = {
+    $text: { $search: regex },
+    price: { $gt: 0, $lt: 999 }
+  };
+  console.log("QUERY", query);
+  await Product.find(
+    query,
+    (err, prod) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(prod);
+      }
     }
-  })
+  );
 });
 
-const port = process.env.PORT ||4000;
+
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
-  console.log("Compare Price SERVER RUNNING!", port);
+  console.log("SERVER RUNNING!", port);
 });
