@@ -35,13 +35,10 @@ mathem.getAllData();
 // });
 
 app.get("/api/search", async (req, res) => {
-
   var regex = new RegExp(req.query.productname, "i");
   const query = {
-    $text: { $search: regex },
-    price: { $gt: 0, $lt: 999 }
+    $text: { $search: regex }
   };
-  console.log("QUERY", query);
   await Product.find(
     query,
     (err, prod) => {
