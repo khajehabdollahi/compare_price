@@ -21,6 +21,8 @@ const Search = () => {
   
     const mathem = getProducts.filter(sortMathemProducts)
     const citygross = getProducts.filter(sortCitygrossProducts)
+    mathem.sort((a, b) => { return a.price - b.price })
+    citygross.sort((a, b) => { return a.price - b.price });
     setMathemProducts(mathem);
     setCitygrossProducts(citygross);
   };

@@ -76,7 +76,7 @@ module.exports = class CityGrossData {
           price: product.defaultPrice.currentPrice.price,
           unit: product.defaultPrice.currentPrice.unit,
           comparePrice: product.defaultPrice.currentPrice.comparisonPrice,
-          category: this.getCategories(product.superCategory.toLowerCase()),
+          category: product.category,
           shopName: "citygross"
         };
         return Product.replaceOne(

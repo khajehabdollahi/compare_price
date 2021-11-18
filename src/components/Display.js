@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
-import {
-  Container,
+import React, {  useContext} from "react";
+import { 
   Row,
   Col,
   Card,
@@ -18,35 +17,36 @@ const Display = () => {
   const mapMathemProducts = () => {
     return mathemProducts.map((product, i) => {
       return (
-          <Card
-            className="product border-success"
-            key={"sub" + product._id + i}
-            style={{ marginTop: "20px" }}
-          >
-            <CardImg
-              alt="Card image cap"
-              src={product.image}
-              style={{
-                maxWidth: "90px",
-                maxHeight: "150px",
-                paddingTop: "20px",
-                paddingLeft: "20px",
-              }}
-              top
-              width="100%"
-            />
-            <CardBody>
-              <CardTitle tag="h5">{product.productName}</CardTitle>
-              <CardSubtitle className="mb-2 text-capitalize text-info" tag="h6">
-                Price: {product.price} {product.unit}
-              </CardSubtitle>
-              <CardText className="text-uppercase">{product.shopName}</CardText>
+        <Card
+          className="product border-success"
+          key={"sub" + product._id + i}
+          style={{ marginTop: "20px" }}
+        >
+          <CardImg
+            alt="Card image cap"
+            src={product.image}
+            style={{
+              maxWidth: "90px",
+              maxHeight: "150px",
+              paddingTop: "20px",
+              paddingLeft: "20px",
+            }}
+            top
+            width="100%"
+          />
+          <CardBody>
+            <CardTitle tag="h5">{product.productName}</CardTitle>
+            <h6 tag="h5" className="text-secondary"> Category: {product.category}</h6>
+            <CardSubtitle className="mb-2 text-capitalize text-info" tag="h6">
+              Price: {product.price} <span className="text-secondary">/{product.unit}</span>
+            </CardSubtitle>
+            <CardText className="text-uppercase">{product.shopName}</CardText>
 
-              <button className="btn btn-sm btn-outline-success d-block">
-                BUY
-              </button>
-            </CardBody>
-          </Card>
+            <button className="btn btn-sm btn-outline-success d-block">
+              BUY
+            </button>
+          </CardBody>
+        </Card>
       );
     });
   };
@@ -55,7 +55,7 @@ const Display = () => {
     return citygrossProducts.map((product, i) => {
       return (
         <Card
-          className="product border-success"
+          className="product border-success bg-light"
           key={"sub" + product._id + i}
           style={{ marginTop: "20px" }}
         >
@@ -75,10 +75,14 @@ const Display = () => {
           </div>
           <CardBody>
             <CardTitle tag="h5">{product.productName}</CardTitle>
+            <h6 tag="h5" className="text-secondary"> Category: {product.category}</h6>
             <CardSubtitle className="mb-2 text-capitalize text-info" tag="h6">
-              Price: {product.price} {product.unit}
+              Price: {product.price}{" "}
+              <span className="text-secondary">/{product.unit}</span>
             </CardSubtitle>
-            <CardText className="text-uppercase">{product.shopName}</CardText>
+            <CardText className="text-uppercase text-warning">
+              {product.shopName}
+            </CardText>
 
             <button className="btn btn-sm btn-outline-success d-block">
               BUY

@@ -24,16 +24,6 @@ let mathem = new MatHemData();
 mathem.getAllData();
 
 
-// app.get("/api/products", async (req, res) => {
-//   await Product.find({}, (err, prod) => {
-//     if (err) {
-//       res.json(err);
-//     } else {
-//       res.json(prod);
-//     }
-//   })
-// });
-
 app.get("/api/search", async (req, res) => {
   var regex = new RegExp(req.query.productname, "i");
   const query = {
