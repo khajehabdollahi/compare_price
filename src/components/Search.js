@@ -1,32 +1,47 @@
 import React, {useState, useContext} from 'react'
-import { Container, Form, FormGroup, Input, Button } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Input, Button } from 'reactstrap';
 import { ProductContext } from "../contexts/ProductContextProvider";
 
 const Search = () => {
-  const { setProducts } = useContext(ProductContext);
+  const { setMathemProducts, setCitygrossProducts } = useContext(ProductContext);
   const [searchItem, setSearchItem] = useState('');
+
+  const sortMathemProducts = (prod) => {
+    return prod.shopName === "mathem";
+  }
+
+  const sortCitygrossProducts = (prod) => {
+    return prod.shopName === "citygross";
+  };
 
   const searchProducts = async (e) => {
     e.preventDefault();
     let getProducts = await fetch(`/api/search?productname=${searchItem}`);
     getProducts = await getProducts.json();
-    setProducts(getProducts);
+  
+    const mathem = getProducts.filter(sortMathemProducts)
+    const citygross = getProducts.filter(sortCitygrossProducts)
+    setMathemProducts(mathem);
+    setCitygrossProducts(citygross);
   };
 
   return (
-    <Container>
-      <div className="mt-5">
-        <Form onSubmit={searchProducts}>
-          <FormGroup>
-            <Input
-              value={searchItem}
-              onChange={(e) => setSearchItem(e.target.value)}
-            />
-            <Button>Search!</Button>
-          </FormGroup>
-        </Form>
-      </div>
-    </Container>
+
+      <Row className="mt-5 d-flex justify-content-center" >
+        <Col lg="10" className="">
+          <Form onSubmit={searchProducts}>
+            <FormGroup className="d-flex">
+              <Input
+                value={searchItem}
+                onChange={(e) => setSearchItem(e.target.value)}
+              />
+              <button className="btn btn-sm btn-outline-primary">
+                Search!
+              </button>
+            </FormGroup>
+          </Form>
+        </Col>
+      </Row>
   );
 }
 
